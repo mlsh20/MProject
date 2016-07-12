@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/court"
+    tools:context=".MainActivity" >
+
+       <Button
+	       android:id="@+id/button01"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:minHeight="0dp" 
+	       android:minWidth="0dp"
+	       android:text="自由移動" />
+
+	   <Button
+	       android:id="@+id/three_d"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_toRightOf="@+id/playbutton"
+	       android:minHeight="0dp" 
+	       android:minWidth="0dp"
+	       android:text="3D環場" />
+
+	   <Button
+	       android:id="@+id/playbutton"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_toRightOf="@+id/button01"
+	       android:minHeight="0dp" 
+	       android:minWidth="0dp"
+	       android:text="播放" />
+	   
+	   <FrameLayout 
+           android:id="@+id/ButtonDrawLayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_toRightOf="@+id/three_d"
+           >
+	       <fragment
+	           android:id="@+id/ButtonDraw"
+	           android:name="com.example.helloworld.ButtonDraw"
+	           android:layout_width="match_parent"
+          	   android:layout_height="wrap_content"
+	           />
+	   </FrameLayout>   
+         
+	   <FrameLayout 
+           android:id="@+id/MainLayout"
+           android:layout_alignParentTop="true"
+           android:layout_width="fill_parent"
+           android:layout_height="fill_parent"
+           android:layout_above="@+id/time_line"
+           >
+
+	       <fragment
+	           android:id="@+id/Main"
+	           android:name="com.example.helloworld.MainFragment"
+	           android:layout_width="fill_parent"
+	           android:layout_height="fill_parent"
+	           tools:layout="@layout/main_layout" />
+
+	   </FrameLayout> 
+	   
+       <FrameLayout 
+           android:id="@+id/time_line"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="?android:attr/detailsElementBackground"
+           android:layout_margin="50dp"
+           android:padding="20dp"
+           android:layout_alignParentBottom="true"
+           android:layout_centerInParent="true"
+           android:visibility="gone"
+           
+           ></FrameLayout>    
+               
+       
+</RelativeLayout>
