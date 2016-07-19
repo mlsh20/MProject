@@ -31,36 +31,22 @@
 	       android:minWidth="0dp"
 	       android:text="播放" />
 	   
-	   <FrameLayout 
-           android:id="@+id/ButtonDrawLayout"
-           android:layout_width="match_parent"
+
+	   <fragment
+	       android:id="@+id/ButtonDraw"
+	       android:name="com.example.helloworld.ButtonDraw"
+	       android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:layout_toRightOf="@+id/three_d"
-           >
-	       <fragment
-	           android:id="@+id/ButtonDraw"
-	           android:name="com.example.helloworld.ButtonDraw"
-	           android:layout_width="match_parent"
-          	   android:layout_height="wrap_content"
 	           />
-	   </FrameLayout>   
          
-	   <FrameLayout 
-           android:id="@+id/MainLayout"
-           android:layout_alignParentTop="true"
-           android:layout_width="fill_parent"
-           android:layout_height="fill_parent"
-           android:layout_above="@+id/time_line"
-           >
+	   
+	   <fragment
+	       android:id="@+id/Main"
+	       android:name="com.example.helloworld.MainFragment"
+	       android:layout_width="fill_parent"
+	       android:layout_height="fill_parent" />
 
-	       <fragment
-	           android:id="@+id/Main"
-	           android:name="com.example.helloworld.MainFragment"
-	           android:layout_width="fill_parent"
-	           android:layout_height="fill_parent"
-	           tools:layout="@layout/main_layout" />
-
-	   </FrameLayout> 
 	   
        <FrameLayout 
            android:id="@+id/time_line"

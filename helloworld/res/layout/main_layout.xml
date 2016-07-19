@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   		android:layout_width="match_parent"
-  		android:layout_height="match_parent"
-  		>
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_layout" >
+	
     <ImageView
         android:id="@+id/player1"
         android:layout_width="wrap_content"
@@ -59,13 +59,11 @@
                android:layout_marginTop="150dp"
                android:layout_marginLeft="0dp"
                android:src="@drawable/twobasketball" />
-	<!-- 這是放畫布的地方 -->
+		<!-- 這是放畫布的地方 -->
 
     	<ImageView
     	    android:id="@+id/circle"
     	    android:layout_width="match_parent"
-    	    android:layout_height="match_parent" >
-
-    	</ImageView>
+    	    android:layout_height="match_parent" />
     
 </RelativeLayout>

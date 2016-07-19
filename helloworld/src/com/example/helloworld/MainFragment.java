@@ -27,6 +27,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
@@ -56,7 +58,9 @@ public class MainFragment extends Fragment {
 	private int B_startIndex = 0;
 
 	private ImageView circle;
+	//private ImageView myImageView;
 	Bitmap tempBitmap;
+	Canvas tempCanvas;
 
 	private boolean recordcheck = false;
 	private int seekBarCallbackStartTime;
@@ -108,13 +112,12 @@ public class MainFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-		View rootView = inflater.inflate(R.layout.main_layout, container, false);
-		Log.d("debug", "MainFragment onCreateView!");
-		//Log.e("MainFragment onCreateView!", String.valueOf(recordcheck));
-		return rootView;
+		Log.i("debug", "onCreateView()............");
+		return inflater.inflate(R.layout.main_layout, container,false);	
 	}
 
+	
+	
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
@@ -132,13 +135,52 @@ public class MainFragment extends Fragment {
 		ball = (ImageView) getView().findViewById(R.id.ball);
 		ball.setOnTouchListener(ball_Listener);// 觸控時監聽
 
-		circle=(ImageView) getView().findViewById(R.id.circle);
+		circle=(ImageView) getActivity().findViewById(R.id.circle);
+		
+		
+		
+		//tempBitmap = Bitmap.createBitmap(100,100,Bitmap.Config.ARGB_8888);
+		
+		
+		
+		 ViewTreeObserver vto2 = circle.getViewTreeObserver();   
+		    vto2.addOnGlobalLayoutListener(new OnGlobalLayoutListener() {  
+		        @Override   
+		        public void onGlobalLayout() {  
+		        	Paint paint = new Paint();
+		    		paint = new Paint(); // 創建畫筆
+		    		paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
+		    		paint.setColor(Color.TRANSPARENT); // 設置顏色
+		    		
+		        	tempBitmap = Bitmap.createBitmap(circle.getWidth(),circle.getHeight(),Bitmap.Config.ARGB_8888);
+		        	tempCanvas = new Canvas(tempBitmap);
+		    		tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
+		    		tempCanvas.drawCircle(1, 1, 5, paint);
+		    		circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+		            Log.i("debug", "tempBitmap's width = "+Integer.toString(tempBitmap.getWidth()));
+		    		Log.i("debug", "tempBitmap's height = "+Integer.toString(tempBitmap.getHeight()));
+		            circle.getViewTreeObserver().removeGlobalOnLayoutListener(this);  
+		            
+		        }   
+		    });
+		    
+		
+		/*circle.measure(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+		tempBitmap = Bitmap.createBitmap(circle.getMeasuredWidth(),circle.getMeasuredHeight(),Bitmap.Config.ARGB_8888);*/
+		
 		
 		
 		
 		
 	}
-
+	
+	@Override
+    public void onStart() {
+        super.onStart();
+        Log.i("debug", "onStart()............");
+        /**/
+    }
+	
 	public void pass_start_time(int input) {
 		seekBarCallbackStartTime = input;
 	}
@@ -150,16 +192,27 @@ public class MainFragment extends Fragment {
 	public void pass_recordcheck(boolean input) {
 		recordcheck = input;
 		if (recordcheck==true){
-			tempBitmap = Bitmap.createBitmap(circle.getWidth(),circle.getHeight(),Bitmap.Config.ARGB_8888);
 		}
 		/*int[] location =new int[2];
-		player1.getLocationOnScreen(location);*/
+		player1.getLocationOnScreen(location);
+		player1.layout(location[0], location[1], location[0]+player1.getWidth(), location[1]+player1.getHeight());
+		player2.getLocationOnScreen(location);
+		player2.layout(location[0], location[1], location[0]+player2.getWidth(), location[1]+player2.getHeight());
+		player3.getLocationOnScreen(location);
+		player3.layout(location[0], location[1], location[0]+player3.getWidth(), location[1]+player3.getHeight());
+		player4.getLocationOnScreen(location);
+		player4.layout(location[0], location[1], location[0]+player4.getWidth(), location[1]+player4.getHeight());
+		player5.getLocationOnScreen(location);
+		player5.layout(location[0], location[1], location[0]+player5.getWidth(), location[1]+player5.getHeight());
+		ball.getLocationOnScreen(location);
+		ball.layout(location[0], location[1], location[0]+ball.getWidth(), location[1]+ball.getHeight());*/
 	}
 
 	@Override
 	public void onResume() {
 		Log.d("debug", "MainFragment onResume!");
 		super.onResume();
+		
 	}
 
 	@Override
@@ -343,19 +396,18 @@ public class MainFragment extends Fragment {
 		private int mx, my; // 圖片被拖曳的X ,Y軸距離長度
 		private int startX, startY; // 原本圖片存在的X,Y軸位置
 		private int x, y; // 最終的顯示位置
-		private Paint paint = new Paint();
+		private Paint paint;
 
 		@Override
 		public boolean onTouch(View v, MotionEvent event) {
 			// TouchEvent(P1,paint,mx,my,startX,startY,v,event,"P1");
 			
-			Canvas tempCanvas = null;
 			paint = new Paint(); // 創建畫筆
 			paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
-			paint.setColor(Color.BLUE); // 設置顏色
+			paint.setColor(Color.BLACK); // 設置顏色
 			mx = (int) (event.getRawX());
 			my = (int) (event.getRawY());
-
+			
 			switch (event.getAction()) { // 判斷觸控的動作
 			case MotionEvent.ACTION_DOWN:// 按下圖片時
 				
@@ -374,11 +426,10 @@ public class MainFragment extends Fragment {
 					P1.setRoad(y);
 					P1.setRoad_3d((int) event.getRawX());
 					P1.setRoad_3d((int) event.getRawY());
-					tempCanvas = new Canvas(tempBitmap);
+					
 					tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
 					tempCanvas.drawCircle(x+ v.getWidth()/2, y+ v.getHeight()/2, 5, paint);
-					ImageView myImageView = (ImageView) getView().findViewById(R.id.circle);
-					myImageView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+					circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 				}
 				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
 				v.postInvalidate();
@@ -422,7 +473,6 @@ public class MainFragment extends Fragment {
 		public boolean onTouch(View v, MotionEvent event) {
 			// TouchEvent(P1,paint,mx,my,startX,startY,v,event,"P1");
 			
-			Canvas tempCanvas = null;
 			paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
 			paint.setColor(Color.RED); // 設置顏色
 			mx = (int) (event.getRawX());
@@ -441,22 +491,22 @@ public class MainFragment extends Fragment {
 			case MotionEvent.ACTION_MOVE:// 移動圖片時
 				x = mx - startX;
 				y = my - startY;
+				
 				if (recordcheck == true) {
-					tempCanvas = new Canvas(tempBitmap);
 					P2.setRoad(x);
 					P2.setRoad(y);
 					P2.setRoad_3d((int) event.getRawX());
 					P2.setRoad_3d((int) event.getRawY());
-
 					tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
 					tempCanvas.drawCircle(x+ v.getWidth()/2, y+ v.getHeight()/2, 5, paint);
-					ImageView myImageView = (ImageView) getView().findViewById(R.id.circle);
-					myImageView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+					circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 				}
 				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
 				v.postInvalidate();
 				break;
 			case MotionEvent.ACTION_UP:// 放開圖片時
+				/*int[] location=  new int[2];
+				v.getLocationOnScreen(location);*/
 				if (recordcheck == true) {
 					int startIndexTmp = P2_startIndex;
 					while (P2_startIndex != -1) {
@@ -495,7 +545,6 @@ public class MainFragment extends Fragment {
 		public boolean onTouch(View v, MotionEvent event) {
 			// TouchEvent(P1,paint,mx,my,startX,startY,v,event,"P1");
 			
-			Canvas tempCanvas = null;
 			paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
 			paint.setColor(Color.BLUE); // 設置顏色
 			mx = (int) (event.getRawX());
@@ -503,7 +552,7 @@ public class MainFragment extends Fragment {
 
 			switch (event.getAction()) { // 判斷觸控的動作
 			case MotionEvent.ACTION_DOWN:// 按下圖片時
-							
+				
 				startX = (int) event.getX();
 				startY = my - v.getTop();
 				if (recordcheck == true) {
@@ -514,19 +563,20 @@ public class MainFragment extends Fragment {
 			case MotionEvent.ACTION_MOVE:// 移動圖片時
 				x = mx - startX;
 				y = my - startY;
+				
+				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
+				v.postInvalidate();
 				if (recordcheck == true) {
 					P3.setRoad(x);
 					P3.setRoad(y);
 					P3.setRoad_3d((int) event.getRawX());
 					P3.setRoad_3d((int) event.getRawY());
-					tempCanvas = new Canvas(tempBitmap);
+					
 					tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
 					tempCanvas.drawCircle(x+ v.getWidth()/2, y+ v.getHeight()/2, 5, paint);
-					ImageView myImageView = (ImageView) getView().findViewById(R.id.circle);
-					myImageView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+					circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 				}
-				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
-				v.postInvalidate();
+				
 				break;
 			case MotionEvent.ACTION_UP:// 放開圖片時
 				if (recordcheck == true) {
@@ -567,7 +617,6 @@ public class MainFragment extends Fragment {
 		public boolean onTouch(View v, MotionEvent event) {
 			// TouchEvent(P1,paint,mx,my,startX,startY,v,event,"P1");
 			
-			Canvas tempCanvas = null;
 			paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
 			paint.setColor(Color.GREEN); // 設置顏色
 			mx = (int) (event.getRawX());
@@ -592,11 +641,9 @@ public class MainFragment extends Fragment {
 					P4.setRoad_3d((int) event.getRawX());
 					P4.setRoad_3d((int) event.getRawY());
 					
-					tempCanvas = new Canvas(tempBitmap);
 					tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
 					tempCanvas.drawCircle(x+ v.getWidth()/2, y+ v.getHeight()/2, 5, paint);
-					ImageView myImageView = (ImageView) getView().findViewById(R.id.circle);
-					myImageView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+					circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 				}
 				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
 				v.postInvalidate();
@@ -640,7 +687,6 @@ public class MainFragment extends Fragment {
 		public boolean onTouch(View v, MotionEvent event) {
 			// TouchEvent(P1,paint,mx,my,startX,startY,v,event,"P1");
 			
-			Canvas tempCanvas = null;
 			paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
 			paint.setColor(Color.CYAN); // 設置顏色
 			mx = (int) (event.getRawX());
@@ -665,11 +711,9 @@ public class MainFragment extends Fragment {
 					P5.setRoad_3d((int) event.getRawX());
 					P5.setRoad_3d((int) event.getRawY());
 					
-					tempCanvas = new Canvas(tempBitmap);
 					tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
 					tempCanvas.drawCircle(x+ v.getWidth()/2, y+ v.getHeight()/2, 5, paint);
-					ImageView myImageView = (ImageView) getView().findViewById(R.id.circle);
-					myImageView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+					circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 				}
 				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
 				v.postInvalidate();
@@ -713,7 +757,6 @@ public class MainFragment extends Fragment {
 		public boolean onTouch(View v, MotionEvent event) {
 			// TouchEvent(P1,paint,mx,my,startX,startY,v,event,"P1");
 			
-			Canvas tempCanvas = null;
 			paint.setAntiAlias(true); // 設置畫筆的鋸齒效果。 true是去除。
 			paint.setColor(Color.MAGENTA); // 設置顏色
 			mx = (int) (event.getRawX());
@@ -738,11 +781,9 @@ public class MainFragment extends Fragment {
 					B.setRoad_3d((int) event.getRawX());
 					B.setRoad_3d((int) event.getRawY());
 
-					tempCanvas = new Canvas(tempBitmap);
 					tempCanvas.drawBitmap(tempBitmap, 0, 0, null);
 					tempCanvas.drawCircle(x+ v.getWidth()/2, y+ v.getHeight()/2, 5, paint);
-					ImageView myImageView = (ImageView) getView().findViewById(R.id.circle);
-					myImageView.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
+					circle.setImageDrawable(new BitmapDrawable(getResources(), tempBitmap));
 				}
 				v.layout(x, y, x + v.getWidth(), y + v.getHeight());
 				v.postInvalidate();

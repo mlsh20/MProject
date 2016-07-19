@@ -34,9 +34,10 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity implements TimeLine.CallbackInterface ,ButtonDraw.CallbackInterface,MainFragment.CallbackInterface{
 	
-	
+	private MainFragment mainfrag;
 	private int seekBarCallbackStartTime;
 	private int seekBarCallbackDuration;
+	private boolean recordcheck;//檢查是否按下錄製鍵
 	private Vector<RunBag> RunLine;
 	private Player P1,P2,P3,P4,P5,B;
 	
@@ -64,23 +65,17 @@ public class MainActivity extends ActionBarActivity implements TimeLine.Callback
 	
 	public void seekBarStartTime(int startTime){//接收從Timeline傳過來的時間
 		seekBarCallbackStartTime = startTime;
-		MainFragment mainfrag = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.Main);
 		mainfrag.pass_start_time(startTime);
 	}
 	
 	public void seekBarDuration(int duration){//接收從Timeline傳過來的持續時間
 		seekBarCallbackDuration = duration;
-		MainFragment mainfrag = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.Main);
 		mainfrag.pass_duration(duration);
 	}
 	////////////////////////////Timeline的時間(startTime,duration)要傳給main_fragment///////////////////////////
 	
-	
-	private boolean recordcheck = false;//檢查是否按下錄製鍵
-	
 	public void setRecordCheck(boolean in_recordcheck){//in_recordcheck是在ButtonDraw裡面，透過interface的方式，使ButtonDraw可以呼叫這裡的function，進而設定recordcheck的值
 		recordcheck = in_recordcheck;
-		MainFragment mainfrag = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.Main);
 		mainfrag.pass_recordcheck(in_recordcheck);
 	}
 	///////////////////////////recordcheck要傳給main_fragment/////////////////////////////////////////////////
@@ -99,6 +94,7 @@ public class MainActivity extends ActionBarActivity implements TimeLine.Callback
         Button play = (Button)findViewById(R.id.playbutton);
         play.setOnClickListener(playListener);//播放
         play.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
+        mainfrag = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.Main);
         
     }
 
@@ -118,7 +114,6 @@ public class MainActivity extends ActionBarActivity implements TimeLine.Callback
     	@Override
     	public void onClick(View v){
     		
-    	MainFragment mainfrag = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.Main);
     	mainfrag.pass_RunLine_Player_Info();
     	
     	
@@ -151,9 +146,8 @@ public class MainActivity extends ActionBarActivity implements TimeLine.Callback
     	@Override
     	public void onClick(View v) {
 	////////////////////////Save each road(RunBag) and add into RunLine////////////////////////
-    		MainFragment mainFrag = (MainFragment)getSupportFragmentManager().findFragmentById(R.id.Main);
     		
-    		mainFrag.playButton();
+    		mainfrag.playButton();
     	}
     };
     
