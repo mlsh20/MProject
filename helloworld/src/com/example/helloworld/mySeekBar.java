@@ -51,8 +51,8 @@ public class mySeekBar extends View {
     private OnSeekBarChangeListener mBarChangeListener;
 
 
-    private double defaultScreenLow = 1;    //默認前滑塊位置百分比
-    private double defaultScreenHigh = 5;  //默認後滑塊位置百分比
+    private double defaultScreenLow = 0;    //默認前滑塊位置百分比
+    private double defaultScreenHigh = 1;  //默認後滑塊位置百分比
 
     private boolean isEdit = false;     //輸入框是否正在輸入
 
@@ -80,8 +80,8 @@ public class mySeekBar extends View {
         mScollBarWidth = notScrollBarBg.getIntrinsicWidth();
         mScollBarHeight = notScrollBarBg.getIntrinsicHeight();
 
-        mThumbWidth = mThumbLow.getIntrinsicWidth();
-        mThumbHeight = mThumbLow.getIntrinsicHeight();
+        mThumbWidth = 20;/*mThumbLow.getIntrinsicWidth();*///滑塊的大小
+        mThumbHeight = 50;//mThumbLow.getIntrinsicHeight();
 
     }
 

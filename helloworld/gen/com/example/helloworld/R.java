@@ -785,6 +785,39 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static final int elevation=0x7f010095;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int exampleColor=0x7f0100e1;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int exampleDimension=0x7f0100e0;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int exampleDrawable=0x7f0100e2;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int exampleString=0x7f0100df;
         /**  The drawable to show in the button for expanding the activities overflow popup.
              <strong>Note:</strong> Clients would like to set this drawable
              as a clue about the action the chosen activity will perform. For
@@ -2286,8 +2319,9 @@ containing a value of this type.
     }
     public static final class id {
         public static final int ButtonDraw=0x7f0a0064;
+        public static final int LinearLayout_of_playertimeline=0x7f0a0098;
         public static final int Main=0x7f0a0065;
-        public static final int action0=0x7f0a0081;
+        public static final int action0=0x7f0a0082;
         public static final int action_bar=0x7f0a0052;
         public static final int action_bar_activity_content=0x7f0a0003;
         public static final int action_bar_container=0x7f0a0051;
@@ -2296,34 +2330,35 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0a0033;
         public static final int action_bar_title=0x7f0a0032;
         public static final int action_context_bar=0x7f0a0053;
-        public static final int action_divider=0x7f0a0085;
+        public static final int action_divider=0x7f0a0086;
         public static final int action_menu_divider=0x7f0a0005;
         public static final int action_menu_presenter=0x7f0a0006;
         public static final int action_mode_bar=0x7f0a004f;
         public static final int action_mode_bar_stub=0x7f0a004e;
         public static final int action_mode_close_button=0x7f0a0034;
-        public static final int action_settings=0x7f0a008f;
+        public static final int action_settings=0x7f0a0099;
         public static final int activity_chooser_view_content=0x7f0a0035;
         public static final int alertTitle=0x7f0a0041;
         public static final int alignBounds=0x7f0a000b;
         public static final int alignMargins=0x7f0a000c;
         public static final int always=0x7f0a002b;
-        public static final int ball=0x7f0a007c;
+        public static final int ball=0x7f0a007d;
         public static final int beginning=0x7f0a0030;
         public static final int bottom=0x7f0a000d;
         public static final int button01=0x7f0a0061;
         public static final int button02=0x7f0a0067;
         public static final int button03=0x7f0a0068;
         public static final int buttonPanel=0x7f0a003c;
-        public static final int cancel_action=0x7f0a0082;
-        public static final int cbx1=0x7f0a0074;
-        public static final int cbx2=0x7f0a0075;
+        public static final int button_clear=0x7f0a006a;
+        public static final int cancel_action=0x7f0a0083;
+        public static final int cbx1=0x7f0a0075;
+        public static final int cbx2=0x7f0a0076;
         public static final int center=0x7f0a000e;
         public static final int center_horizontal=0x7f0a000f;
         public static final int center_vertical=0x7f0a0010;
         public static final int checkbox=0x7f0a004a;
-        public static final int chronometer=0x7f0a0088;
-        public static final int circle=0x7f0a007d;
+        public static final int chronometer=0x7f0a0089;
+        public static final int circle=0x7f0a007e;
         public static final int clip_horizontal=0x7f0a0011;
         public static final int clip_vertical=0x7f0a0012;
         public static final int collapseActionView=0x7f0a002c;
@@ -2335,48 +2370,49 @@ containing a value of this type.
         public static final int disableHome=0x7f0a001f;
         public static final int edit_query=0x7f0a0054;
         public static final int end=0x7f0a0013;
-        public static final int end_padder=0x7f0a008d;
+        public static final int end_padder=0x7f0a008e;
         public static final int expand_activities_button=0x7f0a0036;
         public static final int expanded_menu=0x7f0a0049;
         public static final int fill=0x7f0a0014;
         public static final int fill_horizontal=0x7f0a0015;
         public static final int fill_vertical=0x7f0a0016;
-        public static final int h_court=0x7f0a0080;
-        public static final int half=0x7f0a007f;
+        public static final int h_court=0x7f0a0081;
+        public static final int half=0x7f0a0080;
         public static final int home=0x7f0a0000;
         public static final int homeAsUp=0x7f0a0020;
         public static final int horizontal=0x7f0a0009;
         public static final int icon=0x7f0a003a;
         public static final int ifRoom=0x7f0a002d;
         public static final int image=0x7f0a0037;
-        public static final int info=0x7f0a008c;
+        public static final int info=0x7f0a008d;
         public static final int left=0x7f0a0017;
-        public static final int line1=0x7f0a0086;
-        public static final int line3=0x7f0a008a;
-        public static final int listActivity=0x7f0a006a;
+        public static final int line1=0x7f0a0087;
+        public static final int line3=0x7f0a008b;
+        public static final int listActivity=0x7f0a006b;
         public static final int listMode=0x7f0a001c;
         public static final int list_item=0x7f0a0039;
-        public static final int main=0x7f0a007e;
-        public static final int main_layout=0x7f0a0076;
-        public static final int media_actions=0x7f0a0084;
+        public static final int main=0x7f0a007f;
+        public static final int main_layout=0x7f0a0077;
+        public static final int media_actions=0x7f0a0085;
         public static final int middle=0x7f0a0031;
         public static final int multiply=0x7f0a0026;
+        public static final int myLineView1=0x7f0a0091;
         public static final int never=0x7f0a002e;
         public static final int none=0x7f0a0021;
         public static final int normal=0x7f0a001d;
         public static final int parentPanel=0x7f0a003e;
         public static final int playbutton=0x7f0a0063;
-        public static final int player1=0x7f0a0077;
-        public static final int player2=0x7f0a0078;
-        public static final int player3=0x7f0a0079;
-        public static final int player4=0x7f0a007a;
-        public static final int player5=0x7f0a007b;
+        public static final int player1=0x7f0a0078;
+        public static final int player2=0x7f0a0079;
+        public static final int player3=0x7f0a007a;
+        public static final int player4=0x7f0a007b;
+        public static final int player5=0x7f0a007c;
         public static final int progress_circular=0x7f0a0007;
         public static final int progress_horizontal=0x7f0a0008;
         public static final int radio=0x7f0a004c;
         public static final int recordbutton=0x7f0a0069;
         public static final int right=0x7f0a0018;
-        public static final int scene1Holder=0x7f0a006b;
+        public static final int scene1Holder=0x7f0a006c;
         public static final int screen=0x7f0a0027;
         public static final int scrollIndicatorDown=0x7f0a0046;
         public static final int scrollIndicatorUp=0x7f0a0043;
@@ -2391,15 +2427,15 @@ containing a value of this type.
         public static final int search_plate=0x7f0a005a;
         public static final int search_src_text=0x7f0a005b;
         public static final int search_voice_btn=0x7f0a005f;
-        public static final int seekBar_tg2=0x7f0a008e;
-        public static final int seekbarA1=0x7f0a006c;
-        public static final int seekbarA2=0x7f0a006d;
-        public static final int seekbarA3=0x7f0a006e;
-        public static final int seekbarB1=0x7f0a006f;
-        public static final int seekbarB2=0x7f0a0070;
-        public static final int seekbarB3=0x7f0a0071;
-        public static final int seekbarC1=0x7f0a0072;
-        public static final int seekbarC2=0x7f0a0073;
+        public static final int seekBar_tg2=0x7f0a008f;
+        public static final int seekbarA1=0x7f0a006d;
+        public static final int seekbarA2=0x7f0a006e;
+        public static final int seekbarA3=0x7f0a006f;
+        public static final int seekbarB1=0x7f0a0070;
+        public static final int seekbarB2=0x7f0a0071;
+        public static final int seekbarB3=0x7f0a0072;
+        public static final int seekbarC1=0x7f0a0073;
+        public static final int seekbarC2=0x7f0a0074;
         public static final int select_dialog_listview=0x7f0a0060;
         public static final int shortcut=0x7f0a004b;
         public static final int showCustom=0x7f0a0022;
@@ -2411,14 +2447,21 @@ containing a value of this type.
         public static final int src_in=0x7f0a0029;
         public static final int src_over=0x7f0a002a;
         public static final int start=0x7f0a0019;
-        public static final int status_bar_latest_event_content=0x7f0a0083;
+        public static final int status_bar_latest_event_content=0x7f0a0084;
         public static final int submit_area=0x7f0a005d;
         public static final int tabMode=0x7f0a001e;
-        public static final int text=0x7f0a008b;
-        public static final int text2=0x7f0a0089;
+        public static final int text=0x7f0a008c;
+        public static final int text2=0x7f0a008a;
+        public static final int textBall=0x7f0a0097;
+        public static final int textPlayer1=0x7f0a0093;
+        public static final int textPlayer2=0x7f0a0092;
+        public static final int textPlayer3=0x7f0a0095;
+        public static final int textPlayer4=0x7f0a0094;
+        public static final int textPlayer5=0x7f0a0096;
         public static final int textSpacerNoButtons=0x7f0a0045;
+        public static final int textView1=0x7f0a0090;
         public static final int three_d=0x7f0a0062;
-        public static final int time=0x7f0a0087;
+        public static final int time=0x7f0a0088;
         public static final int time_line=0x7f0a0066;
         public static final int title=0x7f0a003b;
         public static final int title_template=0x7f0a0040;
@@ -2505,12 +2548,14 @@ containing a value of this type.
         public static final int notification_template_media=0x7f030023;
         public static final int notification_template_part_chronometer=0x7f030024;
         public static final int notification_template_part_time=0x7f030025;
-        public static final int select_dialog_item_material=0x7f030026;
-        public static final int select_dialog_multichoice_material=0x7f030027;
-        public static final int select_dialog_singlechoice_material=0x7f030028;
-        public static final int support_simple_spinner_dropdown_item=0x7f030029;
-        public static final int three_d_main=0x7f03002a;
-        public static final int timeline_layout=0x7f03002b;
+        public static final int playertimeline_layout=0x7f030026;
+        public static final int sample_my_line_view=0x7f030027;
+        public static final int select_dialog_item_material=0x7f030028;
+        public static final int select_dialog_multichoice_material=0x7f030029;
+        public static final int select_dialog_singlechoice_material=0x7f03002a;
+        public static final int support_simple_spinner_dropdown_item=0x7f03002b;
+        public static final int three_d_main=0x7f03002c;
+        public static final int timeline_layout=0x7f03002d;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -7187,6 +7232,82 @@ containing a value of this type.
           @attr name com.example.helloworld:preserveIconSpacing
         */
         public static final int MenuView_preserveIconSpacing = 7;
+        /** Attributes that can be used with a MyLineView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MyLineView_exampleColor com.example.helloworld:exampleColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #MyLineView_exampleDimension com.example.helloworld:exampleDimension}</code></td><td></td></tr>
+           <tr><td><code>{@link #MyLineView_exampleDrawable com.example.helloworld:exampleDrawable}</code></td><td></td></tr>
+           <tr><td><code>{@link #MyLineView_exampleString com.example.helloworld:exampleString}</code></td><td></td></tr>
+           </table>
+           @see #MyLineView_exampleColor
+           @see #MyLineView_exampleDimension
+           @see #MyLineView_exampleDrawable
+           @see #MyLineView_exampleString
+         */
+        public static final int[] MyLineView = {
+            0x7f0100df, 0x7f0100e0, 0x7f0100e1, 0x7f0100e2
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.helloworld.R.attr#exampleColor}
+          attribute's value can be found in the {@link #MyLineView} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.helloworld:exampleColor
+        */
+        public static final int MyLineView_exampleColor = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.example.helloworld.R.attr#exampleDimension}
+          attribute's value can be found in the {@link #MyLineView} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.helloworld:exampleDimension
+        */
+        public static final int MyLineView_exampleDimension = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.helloworld.R.attr#exampleDrawable}
+          attribute's value can be found in the {@link #MyLineView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.example.helloworld:exampleDrawable
+        */
+        public static final int MyLineView_exampleDrawable = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.example.helloworld.R.attr#exampleString}
+          attribute's value can be found in the {@link #MyLineView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.helloworld:exampleString
+        */
+        public static final int MyLineView_exampleString = 0;
         /** Attributes that can be used with a PopupWindow.
            <p>Includes the following attributes:</p>
            <table>

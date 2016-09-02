@@ -28,7 +28,6 @@
 	       android:layout_width="wrap_content"
 	       android:layout_height="wrap_content"
 	       android:layout_alignBottom="@+id/button03"
-	       android:layout_alignParentRight="true"
 	       android:layout_alignParentTop="true"
 	       android:layout_toRightOf="@+id/button03"
 	       android:minHeight="0dp"
@@ -37,5 +36,16 @@
 	       android:text="開始錄製"
 	       android:textOff="開始錄製"
 	       android:textOn="停止錄製" />
+
+	   <Button
+	       android:id="@+id/button_clear"
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:layout_alignBottom="@+id/recordbutton"
+	       android:layout_toRightOf="@+id/recordbutton"
+	       android:minHeight="0dp"
+	       android:minWidth="0dp"
+	       android:text="清除筆跡"
+	       android:textSize="10dp" />
 	   
 </RelativeLayout>

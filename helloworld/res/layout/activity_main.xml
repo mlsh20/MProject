@@ -40,26 +40,28 @@
            android:layout_toRightOf="@+id/three_d"
 	           />
          
-	   
 	   <fragment
 	       android:id="@+id/Main"
 	       android:name="com.example.helloworld.MainFragment"
 	       android:layout_width="fill_parent"
-	       android:layout_height="fill_parent" />
-
+	       android:layout_height="fill_parent"
+	       tools:layout="@layout/main_layout" />
 	   
-       <FrameLayout 
+	   
+	   
+       <fragment 
            android:id="@+id/time_line"
+           android:name="com.example.helloworld.TimeLine"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:background="?android:attr/detailsElementBackground"
-           android:layout_margin="50dp"
-           android:padding="20dp"
-           android:layout_alignParentBottom="true"
-           android:layout_centerInParent="true"
-           android:visibility="gone"
-           
-           ></FrameLayout>    
+	       android:layout_height="wrap_content"
+	       android:background="?android:attr/detailsElementBackground"
+	       android:layout_margin="50dp"
+	       android:padding="20dp"
+	       android:layout_alignParentBottom="true"
+	       android:layout_centerInParent="true"
+	       android:visibility="gone"
+           >  
+       </fragment>    
                
        
 </RelativeLayout>

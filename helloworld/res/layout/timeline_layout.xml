@@ -1,23 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-     
+
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Time Line"
         android:layout_gravity="center"
         android:gravity="center"
-        />
-    <com.example.helloworld.mySeekBar 
-        android:id="@+id/seekBar_tg2"
-        android:layout_width="match_parent"
+        android:text="Time Line" />
+
+    <com.example.helloworld.MyLineView
+        android:id="@+id/myLineView1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        />
-</LinearLayout>
+        android:layout_below="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/textPlayer1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/myLineView1"
+        android:text="Player 1" />
+
+    <TextView
+        android:id="@+id/textPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textPlayer1"
+        android:text="Player 2" />
+
+    <TextView
+        android:id="@+id/textPlayer3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textPlayer2"
+        android:text="Player 3" />
+
+    <TextView
+        android:id="@+id/textPlayer4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textPlayer3"
+        android:text="Player 4" />
+
+    <TextView
+        android:id="@+id/textPlayer5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textPlayer4"
+        android:text="Player 5" />
+
+    <TextView
+        android:id="@+id/textBall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/textPlayer5"
+        android:text="Ball" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_of_playertimeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textPlayer1"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/textPlayer1"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</RelativeLayout>
