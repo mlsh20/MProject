@@ -14,7 +14,7 @@ import android.view.View;
 
 public class mySeekBar extends View {
     private static final String TAG = "mySeekBar";
-    private static final int Max_Value = 5;		//seekBar的最大值
+    private static final int Max_Value = 8;		//seekBar的最大值
     private static final int CLICK_ON_LOW = 1;      //點擊在前滑塊上
     private static final int CLICK_ON_HIGH = 2;     //點擊在後滑塊上
     private static final int CLICK_IN_LOW_AREA = 3;
@@ -77,10 +77,10 @@ public class mySeekBar extends View {
         mThumbLow.setState(STATE_NORMAL);
         mThumbHigh.setState(STATE_NORMAL);
 
-        mScollBarWidth = notScrollBarBg.getIntrinsicWidth();
-        mScollBarHeight = notScrollBarBg.getIntrinsicHeight();
+        mScollBarWidth = hasScrollBarBg.getIntrinsicWidth();
+        mScollBarHeight = hasScrollBarBg.getIntrinsicHeight();
 
-        mThumbWidth = 20;/*mThumbLow.getIntrinsicWidth();*///滑塊的大小
+        mThumbWidth = 50;/*mThumbLow.getIntrinsicWidth();*///滑塊的大小
         mThumbHeight = 50;//mThumbLow.getIntrinsicHeight();
 
     }

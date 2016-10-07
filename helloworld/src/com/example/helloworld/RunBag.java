@@ -20,7 +20,22 @@ public class RunBag implements Serializable{
 		rate = duration/(road_size);
 	}
 	
+	
+	
+	
 	public RunBag(){
+		
+	}
+	
+	public String getRunBagInfo(){
+		
+		String tmp = new String();
+		tmp=Integer.toString(start_time)+"\n";
+		tmp+=handler+"\n";
+		tmp+=Integer.toString(road_start)+"\n";
+		tmp+=Integer.toString(road_end)+"\n";
+		tmp+=Integer.toString(duration);
+		return tmp;
 		
 	}
 	

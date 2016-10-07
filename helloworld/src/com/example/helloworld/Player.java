@@ -5,10 +5,19 @@ import java.util.Vector;
 
 public class Player implements Serializable{
 	private Vector<Integer> road = new Vector();
+	private Vector<Float> curve = new Vector();
 	private Vector<Integer> road_3d = new Vector();
 	private String PlayerName = new String();
 	private int start_index;
 	private int start_index_3d;
+	
+	public void clear_all(){
+		road.clear();
+		road_3d.clear();
+		start_index=0;
+		start_index_3d=0;
+		
+	}
 	
 	public void setPlayerName(String name){
 		PlayerName = name;
@@ -28,12 +37,29 @@ public class Player implements Serializable{
 	}
 	
 	public int getLastRoad(){
-		return road.indexOf(road.lastElement());
+		return road.size()-1;
 	}
 	
 	public int handleGetRoad(int in_index){
 		return road.get(in_index);
 	}
+	
+	public void setCurve(float add_object){
+		curve.add(add_object);
+	}
+	
+	public int getCurveSize(){
+		return curve.size();
+	}
+	
+	public float getCurve(int i){
+		return curve.get(i);
+	}
+	
+	public Vector<Float> getCmpltCurve(){
+		return curve;
+	}
+	
 	
 	public void setRoad(int add_object){
 		road.add(add_object);

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/detailsElementBackground"
     android:orientation="vertical" >
 
     <TextView
@@ -23,61 +24,127 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/myLineView1"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
         android:text="Player 1" />
-
+    
     <TextView
         android:id="@+id/textPlayer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textPlayer1"
+        android:layout_alignBaseline="@+id/textPlayer1"
+        android:layout_alignBottom="@+id/textPlayer1"
+        android:layout_toRightOf="@+id/textPlayer1"
+        android:layout_marginLeft="45dp"
         android:text="Player 2" />
 
     <TextView
         android:id="@+id/textPlayer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textPlayer2"
+        android:layout_alignBaseline="@+id/textPlayer1"
+        android:layout_alignBottom="@+id/textPlayer1"
+        android:layout_toRightOf="@+id/textPlayer2"
+        android:layout_marginLeft="45dp"
         android:text="Player 3" />
 
     <TextView
         android:id="@+id/textPlayer4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textPlayer3"
+        android:layout_alignBaseline="@+id/textPlayer1"
+        android:layout_alignBottom="@+id/textPlayer1"
+        android:layout_toRightOf="@+id/textPlayer3"
+        android:layout_marginLeft="45dp"
         android:text="Player 4" />
 
     <TextView
         android:id="@+id/textPlayer5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textPlayer4"
+        android:layout_alignBaseline="@+id/textPlayer1"
+        android:layout_alignBottom="@+id/textPlayer1"
+        android:layout_toRightOf="@+id/textPlayer4"
+        android:layout_marginLeft="45dp"
         android:text="Player 5" />
 
     <TextView
         android:id="@+id/textBall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/textPlayer5"
+        android:layout_alignBaseline="@+id/textPlayer1"
+        android:layout_alignBottom="@+id/textPlayer1"
+        android:layout_toRightOf="@+id/textPlayer5"
+        android:layout_marginLeft="60dp"
         android:text="Ball" />
-
-    <LinearLayout
-        android:id="@+id/LinearLayout_of_playertimeline"
+    
+    
+     <LinearLayout
+        android:id="@+id/LinearLayout_of_player1timeline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textPlayer1"
-        android:layout_marginLeft="25dp"
-        android:layout_toRightOf="@+id/textPlayer1"
-        android:orientation="horizontal" >
+        android:layout_below="@+id/textPlayer1"
+        android:layout_alignLeft="@+id/textPlayer1"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
     </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/LinearLayout_of_player2timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPlayer2"
+        android:layout_alignLeft="@+id/textPlayer2"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_of_player3timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPlayer3"
+        android:layout_alignLeft="@+id/textPlayer3"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_of_player4timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPlayer4"
+        android:layout_alignLeft="@+id/textPlayer4"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_of_player5timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textPlayer5"
+        android:layout_alignLeft="@+id/textPlayer5"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout_of_balltimeline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textBall"
+        android:layout_alignLeft="@+id/textBall"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+   
 
 </RelativeLayout>

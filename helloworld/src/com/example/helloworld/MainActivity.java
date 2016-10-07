@@ -164,8 +164,9 @@ public class MainActivity extends ActionBarActivity implements TimeLine.Callback
     	@Override
     	public void onClick(View v) {
 	////////////////////////Save each road(RunBag) and add into RunLine////////////////////////
-    		
+    		mainfrag.set_playing(1);
     		mainfrag.playButton();
+    		
     	}
     };
     

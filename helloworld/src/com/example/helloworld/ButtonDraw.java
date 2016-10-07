@@ -1,22 +1,29 @@
 package com.example.helloworld;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 import com.example.helloworld.TimeLine.CallbackInterface;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 /*按鈕的抽屜*/
 /*存按鈕們的地方*/
-/*顯示時間軸、隱藏時間軸、開始錄製、清除筆跡*/
+/*顯示時間軸、隱藏時間軸、開始錄製、清除筆跡、清除路徑*/
 
 public class ButtonDraw extends Fragment {
 	
@@ -29,6 +36,7 @@ public class ButtonDraw extends Fragment {
 	public interface CallbackInterface{//連接MainActivity，告訴MainActivity現在有沒有在錄製狀態
 		public void setRecordCheck(boolean in_recordcheck);
 		public void setClean();
+		
 	}
 	
 	private CallbackInterface mCallback;//是一個用來call setRecordCheck的媒介，作用是用來設定in_recordcheck
@@ -68,6 +76,13 @@ public class ButtonDraw extends Fragment {
         button_clear.setOnClickListener(clearListener);
         button_clear.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
         
+        Button button_load = (Button) getView().findViewById(R.id.button_strategies);
+        button_load.setOnClickListener(strategies);
+        button_load.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
+        
+        Button button_DTW = (Button) getView().findViewById(R.id.button_DTW);
+        button_DTW.setOnClickListener(DTW);
+        button_DTW.setTextSize(TypedValue.COMPLEX_UNIT_PX, 20);
         
 	}
 	
@@ -88,19 +103,6 @@ public class ButtonDraw extends Fragment {
     private OnClickListener btn2Listener = new OnClickListener(){//"顯示時間軸"
     	@Override
     	public void onClick(View v) {
-	    	
-    		/*if(first_open_timeline==true){
-    			getActivity().findViewById(R.id.time_line).setVisibility(View.VISIBLE);
-	    		FragmentManager fragmentManager =getFragmentManager();
-		    	FragmentTransaction transaction = fragmentManager.beginTransaction();
-		    	timeline = new TimeLine();
-		    	transaction.add(R.id.time_line,timeline,"Time line");
-		    	transaction.commit();
-		    	fragmentManager.executePendingTransactions();
-		    	first_open_timeline=false;
-	    	
-    		}
-    		else{*/
     			getActivity().findViewById(R.id.time_line).setVisibility(View.VISIBLE);
     			FragmentManager fragmentManager =getFragmentManager();
 		    	FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -108,7 +110,6 @@ public class ButtonDraw extends Fragment {
 		    	transaction.show(timeline);
 		    	transaction.commit();
 		    	fragmentManager.executePendingTransactions();
-    		//}
     		
     	}
     };
@@ -147,12 +148,71 @@ public class ButtonDraw extends Fragment {
     	}
     };
     
-    private OnClickListener clearListener = new OnClickListener(){//"清除筆跡"
+    private OnClickListener clearListener = new OnClickListener(){//"清除..."
     	@Override
     	public void onClick(View v) {
-	    	mCallback.setClean();
+    		final String[] strategies = {"清除筆跡","清除路徑"};
+    		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    		 
+    		builder.setItems(strategies, new DialogInterface.OnClickListener(){
+    	         @Override
+    	         //只要你在onClick處理事件內，使用which參數，就可以知道按下陣列裡的哪一個了
+    	         public void onClick(DialogInterface dialog, int which) {
+    	                // TODO Auto-generated method stub
+    	        	 	if(which==0){//清除筆跡
+    	        	 		mCallback.setClean();
+    	        	 	}
+    	        	 	else if (which==1){//清除路徑
+    	        	 		MainFragment mainfrag =(MainFragment) getActivity().getFragmentManager().findFragmentById(R.id.Main);
+    	            		mainfrag.clear_paint();
+    	            		mainfrag.clear_record();
+    	        	 	}
+    	          }
+    	    });
+            AlertDialog about_dialog = builder.create();
+            about_dialog.show();
     	}
     };
+    
+    
+    
+    private OnClickListener strategies = new OnClickListener(){//"戰術"
+    	@Override
+    	public void onClick(View v) {
+    		final String[] strategies = {"儲存戰術","載入戰術"};
+    		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    		 
+    		builder.setItems(strategies, new DialogInterface.OnClickListener(){
+    	         @Override
+    	         //只要你在onClick處理事件內，使用which參數，就可以知道按下陣列裡的哪一個了
+    	         public void onClick(DialogInterface dialog, int which) {
+    	        	 	MainFragment mainfrag =(MainFragment) getActivity().getFragmentManager().findFragmentById(R.id.Main);
+    	                // TODO Auto-generated method stub
+    	        	 	if(which==0){//儲存戰術
+    	        	 		mainfrag.save_dialog();
+    	        	 	}
+    	        	 	else if (which==1){//載入戰術
+    	        	 		mainfrag.load_dialog();
+    	        	 	}
+    	          }
+    	    });
+            AlertDialog about_dialog = builder.create();
+            about_dialog.show();
+    	}
+    };
+	
+    private OnClickListener DTW = new OnClickListener(){//"DTW"
+    	@Override
+    	public void onClick(View v) {
+    		MainFragment mainfrag =(MainFragment) getActivity().getFragmentManager().findFragmentById(R.id.Main);
+    		mainfrag.Do_DTW();
+    		
+    		
+    		
+    		
+    	}
+    };
+	
 	
 	
 	
